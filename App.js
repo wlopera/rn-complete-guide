@@ -7,12 +7,19 @@ export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
   const [isAddMode, setIsAddMode] = useState(false);
 
+  console.log("Renderizando componente");
+  console.log(courseGoals);
+
   const addGoalHandler = (goalTitle) => {
+    if (goalTitle.length === 0) {
+      return;
+    }
     setCourseGoals((currentGoal) => [...currentGoal, { id: Math.random().toString(), value: goalTitle }]);
     setIsAddMode(false);
   };
 
   const removeGoalHandler = (goalId) => {
+    console.log("Id a borrar: ", goalId);
     setCourseGoals((currentGoal) => {
       return currentGoal.filter((goal) => goal.id !== goalId);
     });
